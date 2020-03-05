@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   serial
   std_msgs
+  geometry_msgs
 )
 
 # ulimit -c unlimited

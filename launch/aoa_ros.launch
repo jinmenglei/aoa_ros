@@ -1,0 +1,6 @@
+<launch>
+  <node name="aoa_ros"          pkg="aoa_ros"  type="aoa_ros" output="screen">
+  <param name="serial_port"         type="string" value="/dev/aoa_ros"/>
+  <param name="serial_baudrate"     type="int"    value="115200"/>
+  </node>
+</launch>

@@ -11,8 +11,8 @@ AOA_ros::AOA_ros()
     /* Get Luncher file define value */
     ros::NodeHandle nh_private("~");
    
-    nh_private.param<std::string>("follow_usart_port", m_strUsart_ports, "/dev/xiaoyuan_follow"); 
-    nh_private.param<int>("follow_baud_data", m_nBaud_rate, 115200); 
+    nh_private.param<std::string>("serial_port", m_strUsart_ports, "/dev/aoa_ros"); 
+    nh_private.param<int>("serial_baudrate", m_nBaud_rate, 115200); 
    
 
     m_pAOA_pub = m_hNodeAOA.advertise<std_msgs::Int32MultiArray>("/AOA_report_date", 1000); 
@@ -44,13 +44,15 @@ bool AOA_ros::OpenSerial(void)
         return false;
     }
 }
-bool AOA_ros::ReadFormUart(void)
+bool AOA_ros::ReadFromUart(void)
 {
     AOA_Serial_Data_Union Reciver_data;
     //Reciver_data.clear();
     memset(&Reciver_data,0,sizeof(AOA_Serial_Data_Union));
     unsigned char RosReadSerialBuffer[1];
     std_msgs::Int32MultiArray  AOA_msg;
+    float angle_f = 0.0;
+    int angle_n = 0;
     
     
     if(m_Robot_Serial.available())
@@ -58,29 +60,23 @@ bool AOA_ros::ReadFormUart(void)
         //ROS_INFO_STREAM("Reading from serial port\n"); 
         m_Robot_Serial.read(Reciver_data.buffer,sizeof(Reciver_data.buffer));
         int start = Reciver_data.AOA_report_date.title.start;
-        int len = Reciver_data.AOA_report_date.title.len;
-        int type = Reciver_data.AOA_report_date.type;
-        int end = Reciver_data.AOA_report_date.end.end;
-        int keys = Reciver_data.AOA_report_date.keys;
-        int quality = Reciver_data.AOA_report_date.quality;
-        int Rssi_first = Reciver_data.AOA_report_date.rx_rssi_first;
-        int Rssi_All = Reciver_data.AOA_report_date.rx_rssi_all;
 
-        if (start == 0x59 
-        && len == 0x13
-        && type == 0x63
-        && end == 0x47
+
+        if (Reciver_data.AOA_report_date.title.start == 0x59 
+        && Reciver_data.AOA_report_date.title.len == 0x13
+        && Reciver_data.AOA_report_date.type == 0x63
+        && Reciver_data.AOA_report_date.end.end == 0x47
         )
         {
             //check key
             AOA_msg.data.clear();
-            AOA_msg.data.push_back(Rssi_first);
-            AOA_msg.data.push_back(Rssi_All);
+            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_first);
+            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_all);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.battery);
-            AOA_msg.data.push_back(keys);
+            AOA_msg.data.push_back(Reciver_data.AOA_report_date.keys);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.dist);
-            float angle_f = Reciver_data.AOA_report_date.angle /1000.0;
-            int angle_n = angle_f*180/3.14;
+            angle_f = Reciver_data.AOA_report_date.angle /1000.0;
+            angle_n = angle_f*180/3.14;
             AOA_msg.data.push_back(angle_n);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.anchor_status);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.quality);
@@ -91,7 +87,7 @@ bool AOA_ros::ReadFormUart(void)
         else
         {
             m_Robot_Serial.read(RosReadSerialBuffer,sizeof(RosReadSerialBuffer));
-            ROS_INFO_STREAM("[ReadFormUart] data is illegle !!!\n");
+            ROS_INFO_STREAM("[ReadFromUart] data is illegle !!!\n");
         }
     }
     else
@@ -104,14 +100,14 @@ bool AOA_ros::ReadFormUart(void)
 bool AOA_ros::LoopProcess(void)
 {
 	
-	ros::Rate loop_rate(50);
+	ros::Rate loop_rate(100);
 
 	while (ros::ok())
 	{
 		//main logic
 
 		//read urat
-		ReadFormUart();
+		ReadFromUart();
 
 		ros::spinOnce();
 		loop_rate.sleep();
@@ -126,7 +122,7 @@ AOA_ros::~AOA_ros()
 int main(int argc, char *argv[])
 {
 	//init
-	ros::init(argc, argv, "test_follow");
+	ros::init(argc, argv, "AOA_ros");
 	
 	//creater
 	AOA_ros AOA_ros_control;
