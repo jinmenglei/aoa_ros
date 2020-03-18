@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -Wextra -Wpedantic -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/utry/catkin_ws/src/aoa_ros/include -I/opt/ros/ardent/include -I/opt/ros/kinetic/include 
+CXX_INCLUDES = -I/home/utry/catkin_ws/src/aoa_ros/include -I/opt/ros/kinetic/include -I/opt/ros/ardent/include 
 
