@@ -1,12 +1,14 @@
 #ifndef __AOA_ROS_H_
 #define __AOA_ROS_H_
 
-#include "std_msgs/Int32MultiArray.h"
+#include "std_msgs/msg/int32_multi_array.hpp"
 #include <serial/serial.h>
-#include "ros/ros.h"
-#include <geometry_msgs/PointStamped.h>
+#include "rclcpp/rclcpp.hpp"
+#include "rclcpp/logger.hpp"
 
 #define PROTOBUFLENGHT      19
+
+using namespace rclcpp;
 
 #pragma pack(1)
 
@@ -72,11 +74,10 @@ public:
     serial::Serial m_Robot_Serial; //声明串口对象 
     string m_strUsart_ports;
     int m_nBaud_rate;
-    
 
-private:  
-    ros::NodeHandle m_hNodeAOA; 
-    ros::Publisher m_pAOA_pub;  
+private:
+    shared_ptr<Node> m_hNodeAOA;
+    Publisher<std_msgs::msg::Int32MultiArray>::SharedPtr m_pAOA_pub;
 };
 
 

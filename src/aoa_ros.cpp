@@ -9,13 +9,16 @@ AOA_ros::AOA_ros()
 {
     
     /* Get Luncher file define value */
-    ros::NodeHandle nh_private("~");
-   
-    nh_private.param<std::string>("serial_port", m_strUsart_ports, "/dev/aoa_ros"); 
-    nh_private.param<int>("serial_baudrate", m_nBaud_rate, 115200); 
-   
+    m_hNodeAOA = Node::make_shared("aoa_ros");
 
-    m_pAOA_pub = m_hNodeAOA.advertise<std_msgs::Int32MultiArray>("/AOA_report_date", 1000); 
+    m_strUsart_ports = "/dev/aoa_ros";
+    m_hNodeAOA->get_parameter("serial_port", m_strUsart_ports);
+    m_nBaud_rate = 115200;
+    m_hNodeAOA->get_parameter("serial_baudrate", m_nBaud_rate);
+
+
+    m_pAOA_pub = m_hNodeAOA->create_publisher<std_msgs::msg::Int32MultiArray>("AOA_report_date", 7);
+
 }
 bool AOA_ros::OpenSerial(void)
 {
@@ -29,18 +32,19 @@ bool AOA_ros::OpenSerial(void)
     }
     catch (serial::IOException& e)
     {
-        ROS_ERROR_STREAM("[OpenSerial] Unable to open port ");
+
+        RCLCPP_ERROR(m_hNodeAOA->get_logger(),"[OpenSerial] Unable to open port ");
         return false;
     }
 
     if(m_Robot_Serial.isOpen())
     {
-        ROS_INFO_STREAM("[OpenSerial] Serial Port opened");
+        RCLCPP_INFO(m_hNodeAOA->get_logger() ,"[OpenSerial] Serial Port opened");
         return true;
     }
     else
     {
-        ROS_INFO_STREAM("[OpenSerial] Serial Port open fail");
+        RCLCPP_ERROR(m_hNodeAOA->get_logger() ,"[OpenSerial] Serial Port open fail");
         return false;
     }
 }
@@ -50,7 +54,7 @@ bool AOA_ros::ReadFromUart(void)
     //Reciver_data.clear();
     memset(&Reciver_data,0,sizeof(AOA_Serial_Data_Union));
     unsigned char RosReadSerialBuffer[1];
-    std_msgs::Int32MultiArray  AOA_msg;
+    std_msgs::msg::Int32MultiArray  AOA_msg;
     float angle_f = 0.0;
     int angle_n = 0;
     
@@ -59,7 +63,6 @@ bool AOA_ros::ReadFromUart(void)
     { 
         //ROS_INFO_STREAM("Reading from serial port\n"); 
         m_Robot_Serial.read(Reciver_data.buffer,sizeof(Reciver_data.buffer));
-        int start = Reciver_data.AOA_report_date.title.start;
 
 
         if (Reciver_data.AOA_report_date.title.start == 0x59 
@@ -75,19 +78,19 @@ bool AOA_ros::ReadFromUart(void)
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.battery);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.keys);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.dist);
-            angle_f = Reciver_data.AOA_report_date.angle /1000.0;
+            angle_f = Reciver_data.AOA_report_date.angle /1000.0; // NOLINT(bugprone-narrowing-conversions)
             angle_n = angle_f*180/3.14;
             AOA_msg.data.push_back(angle_n);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.anchor_status);
             AOA_msg.data.push_back(Reciver_data.AOA_report_date.quality);
 
-            m_pAOA_pub.publish(AOA_msg);
+            m_pAOA_pub->publish(AOA_msg);
                     
         }
         else
         {
             m_Robot_Serial.read(RosReadSerialBuffer,sizeof(RosReadSerialBuffer));
-            ROS_INFO_STREAM("[ReadFromUart] data is illegle !!!\n");
+            RCLCPP_ERROR(m_hNodeAOA->get_logger() ,"[ReadFromUart] data is illegle !!!\n");
         }
     }
     else
@@ -100,16 +103,16 @@ bool AOA_ros::ReadFromUart(void)
 bool AOA_ros::LoopProcess(void)
 {
 	
-	ros::Rate loop_rate(100);
+	rclcpp::Rate loop_rate(100);
 
-	while (ros::ok())
+	while (rclcpp::ok())
 	{
 		//main logic
 
 		//read urat
 		ReadFromUart();
 
-		ros::spinOnce();
+		rclcpp::spin_some(m_hNodeAOA);
 		loop_rate.sleep();
 	}
 
@@ -122,7 +125,7 @@ AOA_ros::~AOA_ros()
 int main(int argc, char *argv[])
 {
 	//init
-	ros::init(argc, argv, "AOA_ros");
+	rclcpp::init(argc, argv);
 	
 	//creater
 	AOA_ros AOA_ros_control;
@@ -130,7 +133,7 @@ int main(int argc, char *argv[])
 	//open serial
 	if (!AOA_ros_control.OpenSerial())
 	{
-		return false;
+		return 0;
 	}
 	
 	//go to main loop
