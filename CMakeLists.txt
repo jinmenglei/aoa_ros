@@ -1,37 +1,28 @@
-# new package 
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(aoa_ros)
 
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 14)
+endif()
 
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  serial
-  std_msgs
-  geometry_msgs
-)
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
+endif()
 
-# ulimit -c unlimited
-# ssh firefly@192.168.1.76
-add_compile_options(-g -std=c++11)    #-g -> core dumped
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+#list(APPEND CMAKE_PREFIX_PATH "/opt/ros/kinetic/share/serial")
+find_package(serial REQUIRED)
 
-catkin_package(
-  CATKIN_DEPENDS
-  message_runtime
-  INCLUDE_DIRS include
-  LIBRARIES xiaoyuan_robot
-#  CATKIN_DEPENDS geometry_msgs message_generation nav_msgs nav_msgs roscpp roslib rospy sensor_msgs std_msgs tf
-  DEPENDS system_lib
-)
-
-
-# defind robot status massage
-# command atkin_make -DCATKIN_WHITELIST_PACKAGES="new_msg"
-include_directories(include ${catkin_INCLUDE_DIRS} ${PCL_INCLUDE_DIRS})
-include_directories(
-    include
-    include/${PROJECT_NAME}
-)
+include_directories(include)
 
 add_executable(aoa_ros src/aoa_ros.cpp)
-target_link_libraries(aoa_ros ${catkin_LIBRARIES})
+ament_target_dependencies(aoa_ros rclcpp std_msgs serial)
+install(TARGETS
+    aoa_ros
+    DESTINATION lib/${PROJECT_NAME}
+)
 
+ament_package()
