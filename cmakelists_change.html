@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+.AlignLeft { text-align: left; }
+.AlignCenter { text-align: center; }
+.AlignRight { text-align: right; }
+body { font-family: sans-serif; font-size: 11pt; }
+img.AutoScale { max-width: 100%; max-height: 100%; }
+td { vertical-align: top; padding-left: 4px; padding-right: 4px; }
+
+tr.SectionGap td { font-size: 4px; border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionBegin td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Black; border-right: 1px solid Black; }
+tr.SectionMiddle td { border-left: none; border-top: none; border-right: 1px solid Black; }
+tr.SubsectionAll td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+tr.SubsectionEnd td { border-left: none; border-top: none; border-bottom: 1px solid Gray; border-right: 1px solid Black; }
+table.fc { border-top: 1px solid Black; border-left: 1px solid Black; width: 100%; font-family: monospace; font-size: 10pt; }
+td.TextItemInsigMod { color: #000000; background-color: #EEEEFF; }
+td.TextItemInsigOrphan { color: #000000; background-color: #FAEEFF; }
+td.TextItemNum { color: #696969; background-color: #F0F0F0; }
+td.TextItemSame { color: #000000; background-color: #FFFFFF; }
+td.TextItemSigMod { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigOrphan { color: #000000; background-color: #F1E3FF; }
+.TextSegInsigDiff { color: #0000FF; }
+.TextSegReplacedDiff { color: #0000FF; font-style: italic; }
+.TextSegSigDiff { color: #FF0000; }
+td.TextItemInsigAdd { color: #000000; background-color: #EEEEFF; }
+td.TextItemInsigDel { color: #000000; background-color: #EEEEFF; text-decoration: line-through; }
+td.TextItemSigAdd { color: #000000; background-color: #FFE3E3; }
+td.TextItemSigDel { color: #000000; background-color: #FFE3E3; text-decoration: line-through; }
+</style>
+<title>文本比较(T)</title>
+</head>
+<body>
+文本比较(T)<br/>
+已产生: 2020/3/18 17:49:15<br/>
+&nbsp; &nbsp;
+<br/>
+模式:&nbsp; 全部 &nbsp;
+<br/>
+左边文件: G:\ros1111111\aoa_ros\CMakeLists.txt&nbsp; &nbsp;&nbsp; 右边文件: G:\aoa_ros\CMakeLists.txt &nbsp;
+<br/>
+<table class="fc" cellspacing="0" cellpadding="0">
+<tr class="SectionBegin">
+<td class="TextItemNum AlignRight">1</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">#</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">new</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">package</span><span class="TextSegInsigDiff">&nbsp;</span></td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemNum AlignRight">2</td>
+<td class="TextItemSigMod">cmake_minimum_required(VERSION <span class="TextSegSigDiff">2.8.3</span>)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">1</td>
+<td class="TextItemSigMod">cmake_minimum_required(VERSION <span class="TextSegSigDiff">3.5</span>)</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemNum AlignRight">3</td>
+<td class="TextItemSame">project(aoa_ros)</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemNum AlignRight">2</td>
+<td class="TextItemSame">project(aoa_ros)</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemNum AlignRight">4</td>
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">3</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemNum AlignRight">5</td>
+<td class="TextItemSigMod">&nbsp;</td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemNum AlignRight">4</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">#</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">Default</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">to</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">C++14</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">6</td>
+<td class="TextItemSigMod">f<span class="TextSegSigDiff">ind_p</span><span class="TextSegSigDiff">ackage(c</span><span class="TextSegSigDiff">atkin</span><span class="TextSegInsigDiff"> </span>R<span class="TextSegSigDiff">EQUIRE</span>D<span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">COMPONENTS</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">5</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">i</span>f<span class="TextSegSigDiff">(NOT</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">CMA</span><span class="TextSegSigDiff">K</span><span class="TextSegSigDiff">E_CXX_STA</span><span class="TextSegSigDiff">NDA</span>RD<span class="TextSegSigDiff">)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">7</td>
+<td class="TextItemSigMod">&nbsp; <span class="TextSegSigDiff">ro</span>s<span class="TextSegSigDiff">cpp</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">6</td>
+<td class="TextItemSigMod">&nbsp;&nbsp;<span class="TextSegInsigDiff">&nbsp; </span>s<span class="TextSegSigDiff">et(CMAKE_CXX_STANDARD</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">14)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">8</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">ser</span><span class="TextSegSigDiff">ial</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">7</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">endif()</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">9</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">std_msgs</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">8</td>
+<td class="TextItemSigMod">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">10</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff"> </span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">g</span><span class="TextSegSigDiff">e</span><span class="TextSegInsigDiff">om</span><span class="TextSegInsigDiff">e</span><span class="TextSegSigDiff">try_</span><span class="TextSegInsigDiff">m</span><span class="TextSegInsigDiff">s</span><span class="TextSegSigDiff">gs</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">9</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">if(CMAKE_COMPILER_IS_GNUCXX</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">OR</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">CMAKE_CXX_C</span><span class="TextSegInsigDiff">OM</span><span class="TextSegSigDiff">PIL</span><span class="TextSegInsigDiff">E</span><span class="TextSegSigDiff">R</span><span class="TextSegSigDiff">_ID</span><span class="TextSegInsigDiff"> </span><span class="TextSegInsigDiff">M</span><span class="TextSegSigDiff">ATCHE</span><span class="TextSegInsigDiff">S</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">&quot;Clang&quot;)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">11</td>
+<td class="TextItemSigMod">)</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">10</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp;&nbsp;&nbsp; </span><span class="TextSegSigDiff">set(CMAKE_CXX_FLAGS</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">&quot;${CMAKE_CXX_FLAGS}</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">-Wall</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">-Wextra</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">-Wpedantic&quot;</span>)</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">12</td>
+<td class="TextItemSigMod">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">11</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">endif()</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">13</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">#</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">ulimit</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">-c</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">unlimited</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">12</td>
+<td class="TextItemSigMod">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">14</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">#</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">ssh</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">firefly@192.168.1.76</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">13</td>
+<td class="TextItemSigMod">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">15</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">a</span><span class="TextSegSigDiff">dd_</span><span class="TextSegSigDiff">co</span><span class="TextSegSigDiff">mpile_options(-g</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">-std=c++11)</span><span class="TextSegInsigDiff">&nbsp; &nbsp; </span><span class="TextSegSigDiff">#-g</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">-&gt;</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">co</span><span class="TextSegInsigDiff">re</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">dump</span><span class="TextSegInsigDiff">ed</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">14</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">find</span><span class="TextSegSigDiff">_package(am</span><span class="TextSegSigDiff">e</span><span class="TextSegSigDiff">n</span><span class="TextSegSigDiff">t_</span><span class="TextSegSigDiff">cmake</span><span class="TextSegInsigDiff"> </span><span class="TextSegInsigDiff">RE</span><span class="TextSegSigDiff">Q</span><span class="TextSegSigDiff">UIR</span><span class="TextSegInsigDiff">ED</span><span class="TextSegSigDiff">)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">16</td>
+<td class="TextItemSigMod">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">15</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">find_package(rclcpp</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">REQUIRED)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">16</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">find_package(std_msgs</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">REQUIRED)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">17</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">list(APPEND</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">CMAKE_PREFIX_PATH</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">&quot;/opt/ros/kinetic&quot;)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">17</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">catk</span>in_package(</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">18</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">f</span>in<span class="TextSegSigDiff">d</span>_package(<span class="TextSegSigDiff">serial</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">REQUIRED)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">18</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">CATKIN_DEPENDS</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">19</td>
+<td class="TextItemSigMod">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">19</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">m</span>es<span class="TextSegSigDiff">sag</span><span class="TextSegSigDiff">e_</span><span class="TextSegSigDiff">ru</span><span class="TextSegSigDiff">n</span>ti<span class="TextSegSigDiff">m</span>e</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">20</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">include_directori</span>es<span class="TextSegSigDiff">(include</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">&quot;/opt/ros/kine</span>ti<span class="TextSegSigDiff">c/includ</span>e<span class="TextSegSigDiff">&quot;)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">20</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">INCLUDE_DIRS</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">include</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">21</td>
+<td class="TextItemSigMod">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">21</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">LIBR</span><span class="TextSegSigDiff">A</span><span class="TextSegSigDiff">RIE</span><span class="TextSegInsigDiff">S</span> <span class="TextSegSigDiff">xi</span>ao<span class="TextSegSigDiff">yuan</span>_ro<span class="TextSegSigDiff">bot</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">22</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">add_executable(aoa_ro</span><span class="TextSegInsigDiff">s</span> <span class="TextSegSigDiff">src/</span>ao<span class="TextSegSigDiff">a</span>_ro<span class="TextSegSigDiff">s.cpp)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">22</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">#</span><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">C</span><span class="TextSegSigDiff">A</span><span class="TextSegSigDiff">TKIN</span>_<span class="TextSegInsigDiff">DEPEND</span><span class="TextSegSigDiff">S</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">geometry_msgs</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">m</span>es<span class="TextSegSigDiff">sage_generation</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">nav_msgs</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">nav_msgs</span><span class="TextSegInsigDiff"> </span>ros<span class="TextSegSigDiff">cpp</span> r<span class="TextSegSigDiff">oslib</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">rospy</span> <span class="TextSegSigDiff">sensor_msgs</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">s</span>td_msgs <span class="TextSegSigDiff">tf</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">23</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">ament_target</span>_<span class="TextSegInsigDiff">depend</span><span class="TextSegSigDiff">enci</span>es<span class="TextSegSigDiff">(</span><span class="TextSegSigDiff">a</span><span class="TextSegSigDiff">o</span><span class="TextSegSigDiff">a</span><span class="TextSegSigDiff">_</span>ros r<span class="TextSegSigDiff">c</span><span class="TextSegSigDiff">lcp</span><span class="TextSegSigDiff">p</span> <span class="TextSegSigDiff">s</span>td_msgs <span class="TextSegSigDiff">serial)</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">23</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp; </span><span class="TextSegSigDiff">DEPENDS</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">system_lib</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">24</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">)</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">25</td>
+<td class="TextItemSigMod">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">24</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">install(TARGETS</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">26</td>
+<td class="TextItemSigMod">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">25</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp;&nbsp;&nbsp; </span><span class="TextSegSigDiff">aoa_ros</span></td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">27</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">#</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">defind</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">robot</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">status</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">massage</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">28</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">#</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">command</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">atkin_make</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">-DCATKIN_WHITELIST_PACKAGES=&quot;new_msg&quot;</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">29</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">include_directories(include</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">${catkin_INCLUDE_DIRS}</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">${PCL_INCLUDE_DIRS})</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">30</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">include_directories(</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">31</td>
+<td class="TextItemSigMod"><span class="TextSegInsigDiff">&nbsp;&nbsp;&nbsp; </span><span class="TextSegSigDiff">include</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemNum AlignRight">32</td>
+<td class="TextItemSigMod">&nbsp;&nbsp;&nbsp; <span class="TextSegSigDiff">i</span><span class="TextSegSigDiff">nclude</span>/${PROJECT_NAME}</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">26</td>
+<td class="TextItemSigMod">&nbsp;&nbsp;&nbsp; <span class="TextSegSigDiff">DESTINATION</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">lib</span>/${PROJECT_NAME}</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemNum AlignRight">33</td>
+<td class="TextItemSame">)</td>
+<td class="AlignCenter">=</td>
+<td class="TextItemNum AlignRight">27</td>
+<td class="TextItemSame">)</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemNum AlignRight">34</td>
+<td class="TextItemSame">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">28</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionBegin">
+<td class="TextItemNum AlignRight">35</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">add_executable(aoa_ros</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">src/aoa_ros.cpp)</span></td>
+<td class="AlignCenter">&lt;&gt;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionMiddle">
+<td class="TextItemNum AlignRight">36</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">target_link_libraries(aoa_ros</span><span class="TextSegInsigDiff"> </span><span class="TextSegSigDiff">${catkin_LIBRARIES})</span></td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">&nbsp;</td>
+<td class="TextItemSame">&nbsp;</td>
+</tr>
+<tr class="SectionEnd">
+<td class="TextItemNum AlignRight">37</td>
+<td class="TextItemSigMod">&nbsp;</td>
+<td class="AlignCenter">&nbsp;</td>
+<td class="TextItemNum AlignRight">29</td>
+<td class="TextItemSigMod"><span class="TextSegSigDiff">ament_package()</span></td>
+</tr>
+</table>
+<br/>
+</body>
+</html>
