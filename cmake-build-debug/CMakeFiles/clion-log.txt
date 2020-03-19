@@ -1,9 +1,0 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/utry/catkin_ws/src/aoa_ros
--- Found ament_cmake: 0.4.0 (/opt/ros/ardent/share/ament_cmake/cmake)
--- Using PYTHON_EXECUTABLE: /usr/bin/python3
--- Found rclcpp: 0.4.0 (/opt/ros/ardent/share/rclcpp/cmake)
--- Found rmw_implementation_cmake: 0.4.0 (/opt/ros/ardent/share/rmw_implementation_cmake/cmake)
--- Found std_msgs: 0.4.0 (/opt/ros/ardent/share/std_msgs/cmake)
--- Configuring done
--- Generating done
--- Build files have been written to: /home/utry/catkin_ws/src/aoa_ros/cmake-build-debug

@@ -14,10 +14,9 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-list(APPEND CMAKE_PREFIX_PATH "/opt/ros/kinetic")
 find_package(serial REQUIRED)
 
-include_directories(include "/opt/ros/kinetic/include")
+include_directories(include)
 
 add_executable(aoa_ros src/aoa_ros.cpp)
 ament_target_dependencies(aoa_ros rclcpp std_msgs serial)
