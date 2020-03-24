@@ -1,5 +1,5 @@
 #include "aoa_ros.h"
-
+#include "aoa_ros/aoa_msg.h"
 
 bool AOA_ros::WriteToUart(unsigned char*)
 {
@@ -15,7 +15,7 @@ AOA_ros::AOA_ros()
     nh_private.param<int>("serial_baudrate", m_nBaud_rate, 115200); 
    
 
-    m_pAOA_pub = m_hNodeAOA.advertise<std_msgs::Int32MultiArray>("/AOA_report_date", 1000); 
+    m_pAOA_pub = m_hNodeAOA.advertise<aoa_ros::aoa_msg>("/AOA_report_date", 1000);
 }
 bool AOA_ros::OpenSerial(void)
 {
@@ -51,6 +51,7 @@ bool AOA_ros::ReadFromUart(void)
     memset(&Reciver_data,0,sizeof(AOA_Serial_Data_Union));
     unsigned char RosReadSerialBuffer[1];
     std_msgs::Int32MultiArray  AOA_msg;
+    aoa_ros::aoa_msg aoa_data;
     float angle_f = 0.0;
     int angle_n = 0;
     
@@ -69,19 +70,31 @@ bool AOA_ros::ReadFromUart(void)
         )
         {
             //check key
-            AOA_msg.data.clear();
-            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_first);
-            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_all);
-            AOA_msg.data.push_back(Reciver_data.AOA_report_date.battery);
-            AOA_msg.data.push_back(Reciver_data.AOA_report_date.keys);
-            AOA_msg.data.push_back(Reciver_data.AOA_report_date.dist);
+            aoa_data.rx_rssi_first = Reciver_data.AOA_report_date.rx_rssi_first;
+            aoa_data.rx_rssi_all = Reciver_data.AOA_report_date.rx_rssi_all;
+            aoa_data.battery = Reciver_data.AOA_report_date.battery;
+            aoa_data.keys = Reciver_data.AOA_report_date.keys;
+            aoa_data.dist = Reciver_data.AOA_report_date.dist;
             angle_f = Reciver_data.AOA_report_date.angle /1000.0;
             angle_n = angle_f*180/3.14;
-            AOA_msg.data.push_back(angle_n);
-            AOA_msg.data.push_back(Reciver_data.AOA_report_date.anchor_status);
-            AOA_msg.data.push_back(Reciver_data.AOA_report_date.quality);
+            aoa_data.angle = angle_n;
+            aoa_data.anchor_status = Reciver_data.AOA_report_date.anchor_status;
+            aoa_data.quality = Reciver_data.AOA_report_date.quality;
 
-            m_pAOA_pub.publish(AOA_msg);
+
+//            AOA_msg.data.clear();
+//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_first);
+//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_all);
+//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.battery);
+//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.keys);
+//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.dist);
+//            angle_f = Reciver_data.AOA_report_date.angle /1000.0;
+//            angle_n = angle_f*180/3.14;
+//            AOA_msg.data.push_back(angle_n);
+//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.anchor_status);
+//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.quality);
+
+            m_pAOA_pub.publish(aoa_data);
                     
         }
         else
