@@ -50,7 +50,6 @@ bool AOA_ros::ReadFromUart(void)
     //Reciver_data.clear();
     memset(&Reciver_data,0,sizeof(AOA_Serial_Data_Union));
     unsigned char RosReadSerialBuffer[1];
-    std_msgs::Int32MultiArray  AOA_msg;
     aoa_ros::aoa_msg aoa_data;
     float angle_f = 0.0;
     int angle_n = 0;
@@ -80,20 +79,7 @@ bool AOA_ros::ReadFromUart(void)
             aoa_data.angle = angle_n;
             aoa_data.anchor_status = Reciver_data.AOA_report_date.anchor_status;
             aoa_data.quality = Reciver_data.AOA_report_date.quality;
-
-
-//            AOA_msg.data.clear();
-//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_first);
-//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.rx_rssi_all);
-//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.battery);
-//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.keys);
-//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.dist);
-//            angle_f = Reciver_data.AOA_report_date.angle /1000.0;
-//            angle_n = angle_f*180/3.14;
-//            AOA_msg.data.push_back(angle_n);
-//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.anchor_status);
-//            AOA_msg.data.push_back(Reciver_data.AOA_report_date.quality);
-
+		
             m_pAOA_pub.publish(aoa_data);
                     
         }
